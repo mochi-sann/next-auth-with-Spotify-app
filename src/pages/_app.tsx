@@ -1,4 +1,6 @@
 import { Provider as NextAuthProvider } from 'next-auth/client'
+import { ChakraProvider } from '@chakra-ui/react'
+import { RecoilRoot } from 'recoil'
 
 export default function App({
   Component,
@@ -6,7 +8,11 @@ export default function App({
 }) {
   return (
     <NextAuthProvider session={session}>
-      <Component {...pageProps} />
+      <ChakraProvider>
+        <RecoilRoot>
+          <Component {...pageProps} />
+        </RecoilRoot>
+      </ChakraProvider>
     </NextAuthProvider>
   )
 }

@@ -1,3 +1,4 @@
+import { Button } from '@chakra-ui/button'
 import { signIn, signOut, useSession } from 'next-auth/client'
 
 const AuthButton = () => {
@@ -8,7 +9,7 @@ const AuthButton = () => {
       {!session && (
         <>
           Not signed in <br />
-          <button onClick={() => signIn()}>Sign in</button> {/* 👈ポイント② */}
+          <Button onClick={() => signIn()}>Sign in</Button> {/* 👈ポイント② */}
         </>
       )}
       {session && (
@@ -17,10 +18,10 @@ const AuthButton = () => {
           {/* 👈ポイント③ */}
           <p>{session.user.name}</p>
           <br />
-          <p>AccessToken : {session.accessToken} </p>
+          {/* <p>AccessToken : {session.accessToken} </p> */}
           <br />
-          <button onClick={() => signOut()}>Sign out</button>{' '}
-          <pre>{JSON.stringify(session, null, 3)}</pre>
+          <Button onClick={() => signOut()}>Sign out</Button>{' '}
+          {/* <pre>{JSON.stringify(session, null, 3)}</pre> */}
           {/* 👈ポイント④ */}
         </>
       )}
