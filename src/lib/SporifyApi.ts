@@ -5,7 +5,7 @@ import axios from 'axios'
  * @param BearerToken
  * @returns
  */
-export const PlayerPause = async (BearerToken: string) => {
+export const PlayerPause = async (BearerToken: string, device_ids: string) => {
   const config = {
     method: 'put',
     url: 'https://api.spotify.com/v1/me/player',
@@ -14,7 +14,7 @@ export const PlayerPause = async (BearerToken: string) => {
       'Content-Type': 'application/json',
     },
     data: JSON.stringify({
-      device_ids: ['be4414f1466402bc6b4740f64191366e1058f829'],
+      device_ids: [device_ids || 'be4414f1466402bc6b4740f64191366e1058f829'],
       play: false,
     }),
   }
@@ -28,7 +28,7 @@ export const PlayerPause = async (BearerToken: string) => {
     })
 }
 
-export const PlayerStart = async (BearerToken: string) => {
+export const PlayerStart = async (BearerToken: string, device_ids: string) => {
   const config = {
     method: 'put',
     url: 'https://api.spotify.com/v1/me/player',
@@ -37,7 +37,7 @@ export const PlayerStart = async (BearerToken: string) => {
       'Content-Type': 'application/json',
     },
     data: JSON.stringify({
-      device_ids: ['be4414f1466402bc6b4740f64191366e1058f829'],
+      device_ids: [device_ids || 'be4414f1466402bc6b4740f64191366e1058f829'],
       play: true,
     }),
   }

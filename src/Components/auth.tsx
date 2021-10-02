@@ -1,7 +1,7 @@
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 const AuthButton = () => {
-  const { data: session } = useSession()
+  const [session] = useSession()
 
   return (
     <>
