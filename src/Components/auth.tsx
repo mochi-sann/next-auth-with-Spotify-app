@@ -9,7 +9,7 @@ const AuthButton = () => {
       {!session && (
         <>
           Not signed in <br />
-          <Button onClick={() => signIn()}>Sign in</Button> {/* 👈ポイント② */}
+          <Button onClick={() => signIn("spotify")}>Sign in with Sporify</Button> {/* 👈ポイント② */}
         </>
       )}
       {session && (

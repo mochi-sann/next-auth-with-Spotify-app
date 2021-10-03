@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { signOut } from 'next-auth/client'
+
 import { DevaiceListType } from '../types'
 
 export function useDeviceList(BearerToken?: string) {
@@ -13,9 +15,13 @@ export function useDeviceList(BearerToken?: string) {
         headers: {
           Authorization: `Bearer ${BearerToken}`,
         },
-      }).then(function (response: { data: { devices: DevaiceListType } }) {
-        setDevaiceList(response.data.devices)
       })
+        .then(function (response: { data: { devices: DevaiceListType } }) {
+          setDevaiceList(response.data.devices)
+        })
+        .catch(function (error) {
+          signOut()
+        })
     }
   }, [BearerToken])
 
